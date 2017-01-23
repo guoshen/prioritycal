@@ -1,0 +1,20 @@
+{
+  "name": "workspace",
+  "description": "priority calendar",
+  "main": "server.js",
+  "authors": [
+    "tony <tonyguo526@hotmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/guoshen/prioritycal",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7"
+  }
+}

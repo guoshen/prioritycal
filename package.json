@@ -1,0 +1,35 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "priority calendar",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guoshen/prioritycal.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guoshen/prioritycal/issues"
+  },
+  "homepage": "https://github.com/guoshen/prioritycal#readme",
+  "dependencies": {
+     "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.14.0",
+    "google-calendar": "^1.3.2",
+       "morgan": "^1.7.0",
+    "gulp": "^3.9.1",
+    "pug": "^2.0.0-beta6"
+  },
+  "devDependencies": {
+    "bower": "^1.8.0",
+    "gulp": "^3.9.1",
+        "gulp-sass": "^2.2.0",
+    "gulp-sourcemaps": "^1.6.0"
+  }
+}
