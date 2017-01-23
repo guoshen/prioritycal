@@ -3,4 +3,23 @@ html
   include ./head.pug
 
   body
-    block content
+    nav(class='navbar navbar-default')
+      div(class='container-fluid')
+        div(class='navbar-header')
+          a(class='navbar-brand' href='#')="Priority Calendar"
+        ul(class='nav navbar-nav')
+          li(class='active')
+            a(href='#')="Home"
+          li
+            a(href='#')= "Link"
+          li
+            a(href='#')= "Link"
+          
+          
+          
+  
+  
+    div(class='container')
+      block content
+      
+  
