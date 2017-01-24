@@ -8,6 +8,9 @@ var logger = require('morgan');
 
 var os = require("os");
 
+var config= require('./config');
+console.log(config.google_cal.client_secret);
+
 
 var morgan = require('morgan');
 
