@@ -9,7 +9,29 @@ var logger = require('morgan');
 var os = require("os");
 
 var config= require('./config');
-console.log(config.google_cal.client_secret);
+var google_cal= config.google_cal;
+
+
+
+
+
+
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var passport = require('passport');
+var gcal     = require('google-calendar');
+
+passport.use(new GoogleStrategy({
+    clientID: google_cal.client_id,
+    clientSecret: google_cal.client_secret,
+    callbackURL: "http://localhost:8082/auth/callback",
+    scope: ['openid', 'email', 'https://www.googleapis.com/auth/calendar'] 
+  },
+  function(accessToken, refreshToken, profile, done) {
+    
+  profile.accessToken = accessToken;
+    return done(null, profile);
+  }
+));
 
 
 var morgan = require('morgan');
@@ -20,6 +42,19 @@ var index = require('./routes/index');
 // Server setup
 var app = express();
 var server = http.createServer(app);
+
+app.get('/auth',
+  passport.authenticate('google', { session: false }));
+
+app.get('/auth/callback', 
+  passport.authenticate('google', { session: false, failureRedirect: '/login' }),
+  function(req, res) { 
+    req.session.access_token = req.user.accessToken;
+    res.redirect('/');
+  });
+  
+  
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
