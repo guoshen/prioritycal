@@ -1,16 +1,9 @@
-'use strict';
 var express = require('express');
 var router = express.Router();
 
-
-// GET: /
+/* GET users listing. */
 router.get('/', function(req, res) {
-  res.render('index/index', {
-    title: 'Welcome to Priority Calendar'
-  });
+    res.send('respond with a resource');
 });
-
-
-  
 
 module.exports = router;

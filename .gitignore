@@ -35,3 +35,6 @@ jspm_packages
 
 bower_components
 env/env.json
+
+
+.idea
