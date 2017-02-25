@@ -48,12 +48,14 @@ app.use('/users', users)
 app.use('/auth', auth);
 
 
+
+
 var googleStrategy= require('passport-google-oauth').OAuth2Strategy;
 //identify application
 passport.use(new googleStrategy({
-    clientID: '996153089905-1i15mtvivr9rm1oeb7u77f0501r43pnc.apps.googleusercontent.com',
-    clientSecret: 'ZlCiw72f0FuY5lQkye1GfeLJ',
-    callbackURL: 'http://localhost:3000/auth/google/callback'},
+    clientID: config.google_client_id,
+    clientSecret: config.google_client_secret,
+    callbackURL: '/auth/google/callback'},
     function(req, accessToken, refreshToken, profile, done){
         //user profile from google attached to session
         done(null, profile);
