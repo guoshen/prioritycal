@@ -11,20 +11,6 @@ var logger = require('morgan');
 
 var session= require('express-session');
 var passport= require('passport');
-
-var googleStrategy= require('passport-google-oauth').OAuth2Strategy;
-//identify application
-passport.use(new googleStrategy({
-    clientId: '996153089905-1i15mtvivr9rm1oeb7u77f0501r43pnc.apps.googleusercontent.com',
-    clientSecret: 'ZlCiw72f0FuY5lQkye1GfeLJ',
-    callbackURL: 'http://localhost:3000/auth/google/callback',
-    function(req, accessToken, refreshToken, profile, done){
-        //user profile from google attached to session
-        done(null, profile);
-    }
-}));
-
-
 var os = require("os");
 
 var config= require('./config');
@@ -51,23 +37,42 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
 app.use(session({secret:'temp'}));
+
 app.use(passport.initialize());
 app.use(passport.session());
-
-passport.serializeuser(function(user, done){
-  //put entire user obj into session for now
-  done(null, user);
-});
-passport.deserializeuser(function(user,done){
-  done(null, user);
-});
-
-
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Define routes
 app.use('/', index);
 app.use('/users', users)
+app.use('/auth', auth);
+
+
+var googleStrategy= require('passport-google-oauth').OAuth2Strategy;
+//identify application
+passport.use(new googleStrategy({
+    clientID: '996153089905-1i15mtvivr9rm1oeb7u77f0501r43pnc.apps.googleusercontent.com',
+    clientSecret: 'ZlCiw72f0FuY5lQkye1GfeLJ',
+    callbackURL: 'http://localhost:3000/auth/google/callback'},
+    function(req, accessToken, refreshToken, profile, done){
+        //user profile from google attached to session
+        done(null, profile);
+    })
+);
+
+
+
+
+passport.serializeUser(function(user, done){
+  //put entire user obj into session for now
+  done(null, user);
+});
+passport.deserializeUser(function(user,done){
+  done(null, user);
+});
+
+
+
 
 // Catch 404 errors
 // Forwarded to the error handlers
