@@ -34,7 +34,5 @@ jspm_packages
 .node_repl_history
 
 bower_components
-env/env.json
-
 
 .idea
