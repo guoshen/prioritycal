@@ -26,11 +26,13 @@
     "google-calendar": "^1.3.2",
     "gulp": "^3.9.1",
     "jsonfile": "^2.4.0",
+    "mongodb": "^2.2.26",
     "mongoose": "^4.8.4",
     "morgan": "^1.8.1",
     "passport": "^0.3.2",
     "passport-google-oauth": "^1.0.0",
     "pug": "^2.0.0-beta6",
+    "q": "^1.5.0",
     "static-favicon": "^2.0.0-alpha"
   },
   "devDependencies": {
